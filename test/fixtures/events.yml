@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyText
+  description: MyText
+  contact_number: 1
+  Start_date_time: 2014-08-26 01:34:56
+  end_date_time: 2014-08-26 01:34:56
+  grace_period: 1
+  year_round: false
+  type: MyText
+
+two:
+  name: MyText
+  description: MyText
+  contact_number: 1
+  Start_date_time: 2014-08-26 01:34:56
+  end_date_time: 2014-08-26 01:34:56
+  grace_period: 1
+  year_round: false
+  type: MyText
