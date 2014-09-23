@@ -9,6 +9,7 @@ Tour::Application.routes.draw do
   resources :place
   resources :category
   resources :event
+  resources :dbinfo
   
   namespace :api do
     namespace :v1 do
@@ -19,6 +20,7 @@ Tour::Application.routes.draw do
   match 'places/find' => 'place#find'
   match 'places/my_places' => 'place#my_places'
   match 'places/near_me' => 'place#near_me'
+  match 'dbinfos/get_doe' => 'dbinfo#get_doe'
   match 'places/places_of_interest' => 'place#places_of_interest'
   match 'places/near_me_sort' => 'place#near_me_sort'
   match 'places/top_rated_sort' => 'place#top_rated_sort'
