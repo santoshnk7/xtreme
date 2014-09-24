@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :ratings, :dependent => :destroy
   has_and_belongs_to_many :places
   has_and_belongs_to_many :events
-  has_many :dbinfos
+  #has_many :dbinfos
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:token_authenticatable
