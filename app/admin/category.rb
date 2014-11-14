@@ -1,4 +1,5 @@
 ActiveAdmin.register Category do
+  active_admin_importable
   config.per_page=5
 
   scope 'High Level Groups', :high_level

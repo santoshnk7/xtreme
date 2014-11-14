@@ -15,7 +15,7 @@ gem 'awesome_nested_set'
 gem 'rails_12factor', group: :production
 #gem 'therubyracer', group: :production
 #gem 'libv8-st', '~> 3.11.8.2'
-#gem 'therubyracer-heroku', '~> 0.8.1.pre3', group: :production
+gem 'therubyracer-heroku', '~> 0.8.1.pre3', group: :production
 #gem 'therubyracer-st', group: :development
 gem 'active_admin_importable'
 

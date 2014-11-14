@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+active_admin_importable
   menu :parent => "All Users"
 
   filter :firstname

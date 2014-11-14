@@ -1,4 +1,5 @@
 ActiveAdmin.register InfoTip do
+active_admin_importable
 config.per_page=8
 
 filter :category
