@@ -5,6 +5,10 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'unicorn', group: :production
+gem 'capistrano-unicorn-nginx'
+gem 'capistrano-postgresql'
+
 gem 'imagemagick-identify', '~> 0.0.1'
 gem 'pg','0.17.0'
 gem 'activeadmin'
@@ -28,7 +32,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'active_enum'
+
 gem 'jquery-rails'
+gem 'capistrano',  '~> 3.1'
+gem 'capistrano-rails', '~> 1.1'
+#gem 'capistrano-rvm'
+gem 'capistrano-bundler', '~> 1.1.2'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
