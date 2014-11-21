@@ -223,7 +223,7 @@ class PlaceController < ApplicationController
     if user.present?
       latitude=params[:latitude]
       longitude=params[:longitude]
-      distance_limit=900.0
+      distance_limit=700.0
       places=[]
       Place.where(:status=>"Approved").collect do |place|
         response=String.new
