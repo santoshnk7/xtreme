@@ -26,21 +26,21 @@ server '128.199.208.119', user: 'xtech', roles: %w{web app}
 #
 # Global options
 # --------------
-  set :ssh_options, {
-    keys: %w(/home/santoshnk7/.ssh/id_rsa),
-    forward_agent: false,
-    auth_methods: %w(password)
-  }
+#  set :ssh_options, {
+#    keys: %w(/home/santoshnk7/.ssh/id_rsa),
+#    forward_agent: false,
+#    auth_methods: %w(password)
+#  }
 #
 # And/or per server (overrides global)
 # ------------------------------------
-# server 'example.com',
-#   user: 'user_name',
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: 'user_name', # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: 'please use keys'
-#   }
+ server '128.199.208.119',
+   user: 'xtech',
+   roles: %w{web app},
+   ssh_options: {
+     user: 'xtech', # overrides user setting above
+     keys: %w(/home/xtech/.ssh/id_rsa),
+     forward_agent: false,
+     auth_methods: %w(publickey password)
+     # password: 'please use keys'
+   }
