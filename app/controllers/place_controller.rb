@@ -229,33 +229,50 @@ class PlaceController < ApplicationController
     if user.present?
       latitude=params[:latitude]
       longitude=params[:longitude]
-      distance_limit=900.0
+      distance_limit=700.0
       places=[]
-      Place.where(:status=>"Approved").collect do |place|
+      Place.where(:status=>"Rejected").collect do |place|
         response=String.new
+        
         open("http://maps.googleapis.com/maps/api/distancematrix/json?origins="+latitude.to_s+","+longitude.to_s+"&destinations="+place.actual_latitude+","+place.actual_longitude+"&sensor=false"){|f|
           f.each_line {|line|
             response<<line
           }
         }
-        json=JSON[response]
+        #debugger
+        #Rails.logger.debug response.inspect
 
+        json=JSON[response]
+        
+        Rails.logger.debug json.inspect 
+        Rails.logger.debug json['rows'][0]['elements'][0]['status'].inspect 
+        
         if json['rows'][0]['elements'][0]['status'] == "OK"
            distance=json['rows'][0]['elements'][0]['distance']['text']
         else  
            distance = "0"
         end
 
+        Rails.logger.debug distance.inspect
+         
         distance=(distance.gsub(' m','').to_f/1000).to_s + ' km' if distance.include?(' m')
+        
+        #Rails.logger.debug distance.inspect
+
         if distance.gsub(' km','').to_f <= distance_limit
           places << place.as_json(:only => :id).merge(:distance => distance)
         end
+
+        #Rails.logger.debug places.inspect
+
       end
       render json: places.sort_by{|e| e[:distance].gsub(' km','').to_f}
+      
     else
       render json: ["You need to sign in or sign up before continuing."],:status => 401
     end
   end
+
 
 # POST /place_of_interest
   def place_of_interest

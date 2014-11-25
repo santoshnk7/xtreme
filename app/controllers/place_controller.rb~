@@ -196,7 +196,13 @@ class PlaceController < ApplicationController
           }
         }
         json=JSON[response]
-        distance=json['rows'][0]['elements'][0]['distance']['text']
+
+        if json['rows'][0]['elements'][0]['status'] == "OK"
+           distance=json['rows'][0]['elements'][0]['distance']['text']
+        else  
+           distance = "0"
+        end
+
         distance=(distance.gsub(' m','').to_f/1000).to_s + ' km' if distance.include?(' m')
         places << place.as_json(:only => :id).merge(:distance => distance)
       end
@@ -233,7 +239,13 @@ class PlaceController < ApplicationController
           }
         }
         json=JSON[response]
-        distance=json['rows'][0]['elements'][0]['distance']['text']
+
+        if json['rows'][0]['elements'][0]['status'] == "OK"
+           distance=json['rows'][0]['elements'][0]['distance']['text']
+        else  
+           distance = "0"
+        end
+
         distance=(distance.gsub(' m','').to_f/1000).to_s + ' km' if distance.include?(' m')
         if distance.gsub(' km','').to_f <= distance_limit
           places << place.as_json(:only => :id).merge(:distance => distance)
